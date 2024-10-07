@@ -1,0 +1,62 @@
+<section class="hero has-text-centered" style="min-height: 100vh;">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+
+        <div class="column is-8">
+          <h1 class="title subtitled is-1 mb-6">Lista de libros</h1>
+          <div class="search-container" style="margin-bottom: 2rem;">
+            <div class="field is-grouped">
+              <div class="control is-expanded">
+                <input  class="input" type="text" placeholder="Escribe tu búsqueda..." [(ngModel)]="text">
+              </div>
+              <div class="control">
+                <div class="select">
+                  <select [(ngModel)]="filter" (change)="search()">
+                    <option value="category">Categoría</option>
+                    <option value="title">Título</option>
+                    <option value="author">Autor</option>
+                  </select>
+                </div>
+              </div>
+              <div class="control">
+                <button class="button is-link" (click)="search()">Buscar</button>
+              </div>
+            </div>
+          </div>
+          <table class="table is-bordered is-fullwidth">
+            <thead>
+              <tr>
+                <th class="has-text-centered">Autor</th>
+                <th class="has-text-centered">Título</th>
+                <th class="has-text-centered">Categoría</th>
+                <th class="has-text-centered"></th>
+                <th class="has-text-centered"></th>
+                <th class="has-text-centered"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let b of fBooks">
+                <td>{{b.author}}</td>
+                <td>{{b.title}}</td>
+                <td>{{b.category}}</td>
+                <td>
+                  <a (click)="showEdit(b)"><i class="fa-solid fa-pencil"></i></a>
+                </td>
+                <td>
+                  <a (click)="showDetail(b)"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </td>
+                <td>
+                  <a (click)="showList(b)"><i class="fa-solid fa-list"></i></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-details *ngIf="option.detail||option.list||option.edit" [book]="book" [option]="option"
+  (closeEvent)="reset()"></app-details>

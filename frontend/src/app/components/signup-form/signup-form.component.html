@@ -1,0 +1,37 @@
+<h1 class="titled title is-1 mb-6">Registro</h1>
+<form [formGroup]="userForm" (ngSubmit)="submit()">
+    <div class="field">
+        <label class="label">Nombre de usuario:</label>
+        <div class="control">
+            <input class="input" type="text" placeholder="Ingrese su nombre de usuario" formControlName="username">           
+            <small *ngIf="username.invalid && (username.touched || username.dirty)">Debe ingresar su nombre de usuario.</small>
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">Correo electrónico:</label>
+        <div class="control">
+            <input class="input" type="email" placeholder="Ingrese su correo electrónico" formControlName="email">
+            <small *ngIf="email.invalid && (email.touched || email.dirty)">Debe ingresar su correo.</small>
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">Contraseña:</label>
+        <div class="control">
+            <input class="input" type="password" placeholder="Ingrese su contraseña" formControlName="password">
+            <small *ngIf="password.invalid && (password.touched || password.dirty)">Debe ingresar su contraseña.</small>
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">Confirmar contraseña:</label>
+        <div class="control">
+            <input class="input" type="password" placeholder="Confirme su contraseña" formControlName="passwordCopy">
+            <small *ngIf="passwordCopy.invalid && (passwordCopy.touched || passwordCopy.dirty)">Debe confirmar su contraseña.</small>
+            <small *ngIf="passwordCopy.valid && (passwordValue != passwordCopyValue)">Contraseña incorrecta.</small>
+        </div>
+    </div>
+    <div class="field">
+        <div class="control">
+            <button type="submit" class="button is-primary is-fullwidth">Registrarse</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,58 @@
+<!-- Modal template -->
+<div id="book-modal" [ngClass]="isVisible?'modal is-active':'modal'">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p *ngIf="option.detail" class="modal-card-title">Detalles del libro</p>
+      <p *ngIf="option.edit" class="modal-card-title">Agregar reseña</p>
+      <p *ngIf="option.list" class="modal-card-title">Lista de reseñas</p>
+      <button class="delete" aria-label="close" (click)="close()"></button>
+    </header>
+    <section class="modal-card-body">
+
+      <div class="content">
+
+        <div *ngIf="option.detail">
+          <p class="subtitle">Título: {{book.title}}</p>
+          <p><b>Autor:</b> {{book.author}}</p>
+          <p><b>Categoría: </b> {{book.category}}</p>
+          <p><b>Resumen: </b> {{book.summary}}</p>
+          <p *ngIf="review.id"><b>Tu clificación: </b> {{review.rating}} </p>
+          <p *ngIf="review.id"><b>Tu reseña: </b> <br> {{review.comment}} </p>
+        </div>
+
+        <form [formGroup]="formReview" *ngIf="option.edit">
+          <div class="field">
+            <label for="review-text">Tú reseña:</label>
+            <textarea class="textarea" rows="4" formControlName="comment"></textarea>
+            <small *ngIf="comment.invalid && (comment.touched || comment.dirty)">Debe ingresar su comentario.</small>
+          </div>
+          <div class="field">
+            <label for="review-rating">Calificación (1-5):</label>
+            <input type="number" class="input" min="1" max="5" step="1" value="5" formControlName="rating">
+            <small *ngIf="rating.invalid && (rating.touched || rating.dirty)">Debe ingresar su calificación válida del 1 al 5.</small>
+          </div>
+        </form>
+
+        <div *ngIf="option.list">
+          <p class="subtitle">Reseñas:</p>
+          <ul>
+            <li *ngFor="let r of book.reviews">
+              <p><span style="margin-right: 1rem;"> {{r.reviewDate | date:'dd/MM/yyyy' }} </span> {{r.comment}} </p>
+              <p><b>(calificación {{r.rating}})</b></p>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+      <button *ngIf="!option.edit" class="button" aria-label="close" (click)="close()">Cerrar</button>
+      <button *ngIf="option.edit" class="button is-primary mt-3" id="submit-review" (click)="save()">Publicar</button>
+      <button *ngIf="option.edit" class="button is-danger mt-3 ml-2" id="cancel-review"
+        (click)="close()">Cancelar</button>
+      <button *ngIf="option.edit && review.id" class="button is-default mt-3 ml-2" id="cancel-review"
+        (click)="delete()">Eliminar</button>
+    </footer>
+  </div>
+</div>
