@@ -1,0 +1,52 @@
+/* You can add global styles to this file, and also import other style files */
+@media(max-width: 500px) {
+    .reverse-columns {
+      flex-direction: column-reverse;
+      display: flex;
+    }
+  }
+
+  .titled {
+    /* font-family: 'Merriweather', serif !important; */
+    font-size: 58px !important;
+    font-weight: 400 !important;
+    line-height: 64px !important;
+  }
+
+  .subtitled {
+    /* font-family: 'Merriweather', serif !important; */
+    font-size: 22px !important;
+    font-weight: 400 !important;
+    line-height: 36px !important;
+  }
+  /* styles.css */
+.modal-card {
+  max-width: 800px;
+  width: 90%;
+}
+
+.modal-card-body {
+  max-height: calc(100vh - 210px); /* Adjust height as needed */
+  overflow-y: auto;
+}
+
+.modal-card-head {
+  background-color: #f0f0f0; /* Light gray background */
+}
+
+.modal-card-title {
+  margin-right: auto;
+}
+
+.modal-card-foot {
+  justify-content: flex-end;
+}
+
+.modal-card-body {
+  max-height: calc(100vh - 310px); /* Adjust height as needed */
+  overflow-y: auto;
+}
+
+.modal-card-body label {
+  margin-top: 1rem;
+}

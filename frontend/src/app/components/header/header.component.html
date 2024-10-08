@@ -1,0 +1,18 @@
+<!-- NavBar va a todo lo ancho -->
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item"> Aplicación de reseña de libros </a>
+    <div id="burger" class="navbar-burger burger" data-target="navMenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <div id="navMenu" class="navbar-menu">
+    <div class="navbar-end">
+      <a *ngIf="!isLogIn" class="navbar-item" (click)="showSignIn()"> Login </a>
+      <a *ngIf="!isLogIn" class="navbar-item" (click)="showSignUp()"> Registro </a>
+      <a *ngIf="isLogIn" class="navbar-item" (click)="logOut()"> Cerrar Sesión </a>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,22 @@
+<h1 class="titled title is-1 mb-6"> Iniciar sesión </h1>
+<form [formGroup]="loginForm" (ngSubmit)="submit()">
+    <div class="field">
+        <label class="label">Correo:</label>
+        <div class="control">
+            <input formControlName="email" class="input" type="email" placeholder="Correo">
+            <small *ngIf="email.invalid && (email.touched || email.dirty)">Debe ingresar su correo.</small>        
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">Contraseña:</label>
+        <div class="control">
+            <input formControlName="password" class="input" type="password" placeholder="Contraseña">
+            <small *ngIf="password.invalid && (password.touched || password.dirty)">Debe ingresar su contraseña.</small>
+        </div>
+    </div>
+    <div class="field">
+        <div class="control">
+            <button type="submit" class="button is-primary is-fullwidth">Ingresar</button>
+        </div>
+    </div>
+</form>
