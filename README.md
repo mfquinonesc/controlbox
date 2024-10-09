@@ -18,6 +18,19 @@ La aplicación debería contar con lo siguiente:
 
 Para ejecutar la aplicación localmente, sigue estos pasos:
 
+- Antes de iniciar el proyecto se debe crear la base de datos con el archivo en MySQL
+ 
+    ```
+    database.sql
+    ```
+- Se debe crear la cadena de conección a la base de datos y cambiarla en el archivo ``` appsettings.json ``` según sus parámetros server,port,database,uid y password.
+
+    ```
+    "ConnectionStrings": {
+        "DBLibraryConnection":"server=localhost;port=3306;database=Librarydb;uid=root;password=123456789;"      
+    },
+    ```
+
 1. Clona el repositorio de Git:
 
    git clone [https://github.com/mfquinonesc/controlbox.git](https://github.com/mfquinonesc/controlbox.git)
@@ -49,5 +62,8 @@ Para ejecutar la aplicación localmente, sigue estos pasos:
 <img src="./img/2.png" alt="image" style="width:400px;"/>
 <img src="./img/3.png" alt="image" style="width:400px;"/>
 <img src="./img/4.png" alt="image" style="width:400px;"/>
+<img src="./img/5.png" alt="image" style="width:400px;"/>
+<img src="./img/6.png" alt="image" style="width:400px;"/>
+<img src="./img/7.png" alt="image" style="width:400px;"/>
 
 
